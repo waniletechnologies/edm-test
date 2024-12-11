@@ -8,18 +8,9 @@ const EDMComponent = () => {
   const customerId = "TestCustomer123"; // Example Customer ID
 
   const imageList = [
-    {
-      url: "https://pngimg.com/uploads/dog/dog_PNG50318.png",
-      name: "Design 1",
-    },
-    {
-      url: "https://pngimg.com/uploads/dog/dog_PNG50302.png",
-      name: "Design 2",
-    },
-    {
-      url: "https://pngimg.com/uploads/dog/dog_PNG50264.png",
-      name: "Design 3",
-    },
+    "https://pngimg.com/uploads/dog/dog_PNG50318.png",
+    "https://pngimg.com/uploads/dog/dog_PNG50302.png",
+    "https://pngimg.com/uploads/dog/dog_PNG50264.png",
   ];
 
   useEffect(() => {
@@ -78,23 +69,15 @@ const EDMComponent = () => {
 
   return (
     <div className="h-screen w-screen flex flex-col bg-gray-100">
-      
       {/* Image Selector */}
       <div className="p-4 bg-gray-200 flex gap-4 overflow-auto">
         {imageList.map((image, index) => (
           <div
             key={index}
             className="flex flex-col items-center gap-2 bg-white p-2 rounded shadow cursor-pointer hover:shadow-lg"
-            onClick={() => addImageToDesign(image.url)}
+            onClick={() => addImageToDesign(image)}
           >
-            <img
-              src={image.url}
-              alt={image.name}
-              className="w-24 h-24 object-cover rounded"
-            />
-            <div className="text-sm font-medium text-gray-700">
-              {image.name}
-            </div>
+            <img src={image} className="w-24 h-24 object-cover rounded" />
           </div>
         ))}
       </div>
