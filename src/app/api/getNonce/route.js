@@ -15,7 +15,7 @@ export async function POST(request) {
       },
       {
         headers: {
-          Authorization: `Bearer oRY1n73GEcbTcXSmd33vozaObhoGSzv55hRB4eIA`, // Secure API Key
+          Authorization: `Bearer xT6ER5vsb6Jvmfr23XOmnje0Ahb8I7L6rlvh7ahY`, // Secure API Key
           "Content-Type": "application/json",
         },
       }
