@@ -11,6 +11,7 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import axios from "axios";
 import { Image } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -104,47 +105,81 @@ const EDMComponent = () => {
         className="flex-grow relative bg-white shadow-lg overflow-hidden"
       >
         {isEdmLoaded && (
-          <Drawer>
-            <DrawerTrigger className="absolute top-[0] lg:top-[24.5rem] w-[3.7rem] lg:left-[8px] left-[calc(50%-2rem)] hover:bg-zinc-100 py-1.5 lg:py-4 rounded-lg text-xs opacity-80">
-              <div className="lg:flex-col flex items-center ">
-                <Image size="24" className="lg:w-10 w-4  lg:mb-1 text-center mx-auto" />
-                Images
-              </div>
-            </DrawerTrigger>
-            <DrawerContent>
-              <DrawerHeader>
-                <DrawerTitle>
-                  Select an Image
-                </DrawerTitle>
-                <DrawerDescription>
-                  <div className="flex gap-4">
-                    {imageList.map((image, index) => (
-                      <div
-                        key={index}
-                        className="flex flex-col items-center gap-2 bg-white p-2 rounded shadow cursor-pointer hover:shadow-lg"
-                        onClick={() => addImageToDesign(image)}
-                      >
-                        <DrawerClose>
-                          <img
-                            src={image}
-                            alt={`Image ${index + 1}`}
-                            className="w-24 h-24 object-cover rounded"
-                          />
-                        </DrawerClose>
-                      </div>
-                    ))}
-                  </div>
-                </DrawerDescription>
-              </DrawerHeader>
-              {/* <DrawerFooter className={"grid grid-cols-6"}>
-                <Button>Select</Button>
-                <DrawerClose>
-                  <Button className="w-full" variant="outline">Cancel</Button>
-                </DrawerClose>
-              </DrawerFooter> */}
-            </DrawerContent>
-          </Drawer>
+          <>
+            {/* laptop view */}
+            <Sheet side="left" className="">
+              <SheetTrigger side="left" className="hidden lg:block absolute top-[0] lg:top-[24.5rem] w-[3.7rem] lg:left-[8px] left-[calc(50%-2rem)] hover:bg-zinc-100 py-1.5 lg:py-4 rounded-lg text-xs opacity-80">
+                <div className="lg:flex-col flex items-center ">
+                  <Image size="24" className="lg:w-10 w-4  lg:mb-1 text-center mx-auto" />
+                  Images
+                </div>
+              </SheetTrigger>
+
+              <SheetContent side="left">
+                <SheetHeader>
+                  <SheetTitle>
+                    Select an Image
+                  </SheetTitle>
+                  <SheetDescription>
+                    <div className="flex gap-4">
+                      {imageList.map((image, index) => (
+                        <div
+                          key={index}
+                          className="flex flex-col items-center gap-2 bg-white p-2 rounded shadow cursor-pointer hover:shadow-lg"
+                          onClick={() => addImageToDesign(image)}
+                        >
+                          <DrawerClose>
+                            <img
+                              src={image}
+                              alt={`Image ${index + 1}`}
+                              className="w-24 h-24 object-cover rounded"
+                            />
+                          </DrawerClose>
+                        </div>
+                      ))}
+                    </div>
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
+
+            <Drawer className="">
+              <DrawerTrigger className="lg:hidden absolute top-[0] lg:top-[24.5rem] w-[3.7rem] lg:left-[8px] left-[calc(50%-2rem)] hover:bg-zinc-100 py-1.5 lg:py-4 rounded-lg text-xs opacity-80">
+                <div className="lg:flex-col flex items-center ">
+                  <Image size="24" className="lg:w-10 w-4  lg:mb-1 text-center mx-auto" />
+                  Images
+                </div>
+              </DrawerTrigger>
+              <DrawerContent>
+                <DrawerHeader>
+                  <DrawerTitle>
+                    Select an Image
+                  </DrawerTitle>
+                  <DrawerDescription>
+                    <div className="flex gap-4">
+                      {imageList.map((image, index) => (
+                        <div
+                          key={index}
+                          className="flex flex-col items-center gap-2 bg-white p-2 rounded shadow cursor-pointer hover:shadow-lg"
+                          onClick={() => addImageToDesign(image)}
+                        >
+                          <DrawerClose>
+                            <img
+                              src={image}
+                              alt={`Image ${index + 1}`}
+                              className="w-24 h-24 object-cover rounded"
+                            />
+                          </DrawerClose>
+                        </div>
+                      ))}
+                    </div>
+                  </DrawerDescription>
+                </DrawerHeader>
+              </DrawerContent>
+            </Drawer>
+          </>
         )}
+
       </div>
     </div >
   );
